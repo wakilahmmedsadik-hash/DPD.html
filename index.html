@@ -14,7 +14,7 @@
   2. আপনার ছবিগুলো নিচের নামে সেভ করুন (সাইট নিজেই বসিয়ে নেবে):
      images/logo.png      → আপনার DPD লোগো
      images/tower.jpg     → ভবনের মূল ছবি (হিরো)
-     images/md.jpg        → সিএমডি/মালিকের ছবি
+     images/md.jpg        → এম.ডি/মালিকের ছবি
      images/studio.jpg · family.jpg · shop.jpg · parking.jpg
      images/gallery-1.jpg … gallery-6.jpg
   ছবি না থাকলে সুন্দর প্লেসহোল্ডার দেখাবে — কিছু ভাঙবে না।
@@ -169,6 +169,7 @@ h1 .accent{color:var(--terra);font-style:italic}
 .g-item .media{aspect-ratio:4/3}
 .g-cap{margin-top:10px;font-size:.86rem;color:var(--ink2);text-align:center}
 .g-cap b{display:block;color:var(--ink);font-family:var(--serif)}
+
 /* ---- MD / leadership (serial) ---- */
 .cmd-grid{display:grid;grid-template-columns:340px 1fr;gap:clamp(28px,4vw,60px);align-items:center;margin-top:44px}
 .cmd-media{aspect-ratio:4/5;max-width:360px;box-shadow:0 30px 60px -32px rgba(65,59,49,.4)}
@@ -231,6 +232,24 @@ h1 .accent{color:var(--terra);font-style:italic}
 .req h4{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terrad);font-family:var(--sans);font-weight:600;margin-bottom:6px}
 .req ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 18px;font-size:.87rem;color:var(--ink2)}
 .req li::before{content:"— "}
+
+/* ---- unit tiles (A B C D) ---- */
+.u-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.ucard{border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;display:flex;flex-direction:column;
+  gap:5px;background:#FDFAF2;transition:.3s}
+.ucard.free{border-color:rgba(124,139,108,.55);background:rgba(124,139,108,.08)}
+.ucard.free:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(87,102,74,.5)}
+.ucard.booked{opacity:.72}
+.u-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.u-code{font-family:var(--serif);font-weight:700;font-size:1.5rem;line-height:1;color:var(--ink)}
+.ucard.free .u-code{color:var(--saged)}
+.u-id{font-size:.7rem;color:var(--ink2);letter-spacing:.06em;direction:ltr}
+.u-face{font-size:.8rem;color:var(--ink2)}
+.ucard .chip{align-self:flex-start}
+.u-btn{align-self:flex-start;margin-top:4px;padding:8px 16px;font-size:.82rem}
+.req-note{margin-top:18px;font-size:.86rem;color:var(--ink2);text-align:center}
+.req-note b{color:var(--terrad)}
+@media(max-width:900px){.u-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ---- booking ---- */
 .visit{background:linear-gradient(180deg,#57664A,#48563E);color:#F6F1E4;position:relative;overflow:hidden}
@@ -700,21 +719,29 @@ footer address{font-style:normal;font-size:.93rem;line-height:1.9;color:#CFC5B2}
         <blockquote class="MD-quote">স্বপ্নের দিগন্তকে বাস্তবে গড়তে আমাদের এই অভিযান — আপনার আস্থাই আমাদের সার্থকতা।</blockquote>
         <p class="MD-en">"Building the Diganta of dreams — your trust is our fulfilment."</p>
 
-         <!-- ফিক্সড: ৩ জন নেতৃত্ব — সঠিক ক্লাস ও ট্যাগ সহ -->
+         <!-- ফিক্সড: ৪ জন নেতৃত্ব — সঠিক ক্লাস ও ট্যাগ সহ -->
         <div class="leaders">
           <div class="leader">
+            <span class="l-num">০১</span>
+            <div class="l-bar"></div>
             <p class="l-name">Md. Ajaz Ahmmed Aslam</p>
             <p class="l-role">এমডি · Managing Director</p>
           </div>
           <div class="leader">
+            <span class="l-num">০২</span>
+            <div class="l-bar"></div>
             <p class="l-name">Md. Makul Hossain. </p>
             <p class="l-role">চেয়ারম্যান · Chairman</p>
           </div>
            <div class="leader">
+            <span class="l-num">০৩</span>
+            <div class="l-bar"></div>
             <p class="l-name">Md. Kashem</p>
             <p class="l-role"> অর্থ পরিচালক· Director of Finance</p>
             </div>
            <div class="leader">
+            <span class="l-num">০৪</span>
+            <div class="l-bar"></div>
             <p class="l-name">Md.Tariquzzaman Tareq </p>
             <p class="l-role"> প্রশাসনিক পরিচালক· Director of Admin.</p>
            </div>
@@ -751,22 +778,24 @@ footer address{font-style:normal;font-size:.93rem;line-height:1.9;color:#CFC5B2}
   </div>
 </section>
 
-<!-- ================= AVAILABILITY ================= -->
+<!-- ================= AVAILABILITY (গ্রাউন্ড + ১১ তলা × ৪ ইউনিট + ছাদ) ================= -->
 <section class="sec tint" id="availability">
   <div class="wrap">
     <p class="eyebrow reveal">Availability · তলা-তালিকা</p>
-    <h2 class="reveal" data-d="60">তলা-ভিত্তিক অ্যাভেইলেবিলিটি</h2>
-    <p class="en-sub reveal" data-d="90">Floor-by-floor seat map — click a row for details</p>
+    <h2 class="reveal" data-d="60">তলা ও ইউনিট অ্যাভেইলেবিলিটি</h2>
+    <p class="en-sub reveal" data-d="90">Ground (common) → 11 floors × 4 units (A–D) → Rooftop (common)</p>
     <div class="sched-top reveal" data-d="140">
       <div class="legend">
         <span class="chip free">উপলব্ধ · Available</span>
         <span class="chip booked">বুকড · Booked</span>
         <span class="chip common">কমন · Common</span>
       </div>
-      <span class="chip free">মাত্র ১২টি ইউনিট অবশিষ্ট · ১১ তলা অনুমোদিত</span>
+      <!-- এই লাইনটিও JS থেকে অটো-আপডেট হয় -->
+      <span class="chip free" id="freeChip">মোট ৪৪টি ফ্ল্যাট</span>
     </div>
-    <p class="sched-hint reveal" data-d="180">▼ যেকোনো সারিতে ক্লিক করে বিস্তারিত দেখুন · Click any row</p>
+    <p class="sched-hint reveal" data-d="180">▼ যেকোনো তলায় ক্লিক করলে সেই তলার ৪টি ইউনিট (A, B, C, D) দেখা যাবে · Click a floor</p>
     <div id="floorList" class="reveal" data-d="220"></div>
+    <p class="req-note"><b>বুকিংয়ে যা যা লাগবে · Requirements:</b> জাতীয় পরিচয়পত্র/পাসপোর্ট কপি · সাম্প্রতিক ২ কপি ছবি · বুকিং মানি রিসিট · নমিনির নাম ও সম্পর্ক</p>
   </div>
 </section>
 
@@ -826,14 +855,11 @@ footer address{font-style:normal;font-size:.93rem;line-height:1.9;color:#CFC5B2}
               <option value="info">শুধু তথ্য জানতে চাই · Information only</option>
             </select>
           </div>
+          <!-- উপলব্ধ ইউনিটগুলো JS থেকে অটো-ফিল হয় -->
           <div class="f-group">
             <label for="unit">ইউনিট নির্বাচন করুন <em>Select unit</em></label>
             <select id="unit">
               <option value="unsure">এখনো ঠিক করিনি — দেখে স্যার করব</option>
-              <option value="flat7">৭ম তলা — ফ্যামিলি ফ্ল্যাট · 7th floor family flat</option>
-              <option value="studio4">৪র্থ তলা — স্টুডিও · 4th floor studio</option>
-              <option value="commercial">কমার্শিয়াল স্পেস · Commercial space</option>
-              <option value="parking">পার্কিং / স্টোরেজ · Parking &amp; storage</option>
             </select>
           </div>
           <div class="f-group">
@@ -926,9 +952,10 @@ footer address{font-style:normal;font-size:.93rem;line-height:1.9;color:#CFC5B2}
         <a href="tel:+8801351170210">০১৩৫১-১৭০২১০</a>
       </div>
     </div>
-    <div class="foot-bar">
-      <span>© <span id="yr"></span> দিগন্ত প্রোপার্টিজ অ্যান্ড ডেভেলপমেন্ট · নির্মাণ সহায়তায় <b>এম/এস এম.এ ইঞ্জিনিয়ারিং  · (M/S M.A Engineering)</b></span>
-      <span>নকশা অনুমোদিত · BNBC মান অনুসারে নির্মাণ · ১১ তলা</span>
+  </div>
+  <div class="foot-bar">
+      <span>© <span id="yr"></span> দিগন্ত প্রোপার্টিজ অ্যান্ড ডেভেলপমেন্ট · নির্মাণ সহায়তায় <b>এম/এস এম.এ ইঞ্জিনিয়ারিং (M/S M.A Engineering)</b></span>
+      <span>গ্রাউন্ড + ১১ তলা × ৪ ইউনিট · মোট ৪৪টি ফ্যামিলি ফ্ল্যাট · নকশা অনুমোদিত</span>
     </div>
   </div>
 </footer>
@@ -992,55 +1019,88 @@ document.querySelectorAll('.pillar').forEach(p => {
 });
 
 /* ---------- floor availability ---------- */
-const FLOORS = [
-  { f:'ছাদ', t:'কমন সুবিধা · Common', n:'বসার ডেক · শিশুদের খেলার জায়গা', s:'common',
-    d:{ 'ব্যবহার':'আউটডোর বসার স্পেস ও শিশুদের খেলার জায়গা', 'অতিরিক্ত':'সোলার ব্যাকআপ ও রিজার্ভ ওয়াটার ট্যাংক', 'প্রবেশ':'সব বাসিন্দার জন্য উন্মুক্ত' } },
-  { f:'১১ম তলা', t:'ফ্যামিলি ফ্ল্যাট', n:'শহরের প্যানোরামা', s:'booked' },
-  { f:'১০ম তলা', t:'ফ্যামিলি ফ্ল্যাট', n:'প্রশস্ত বারান্দা', s:'booked' },
-  { f:'৯ম তলা',  t:'ফ্যামিলি ফ্ল্যাট', n:'দক্ষিণমুখী', s:'booked' },
-  { f:'৮ম তলা',  t:'ফ্যামিলি ফ্ল্যাট', n:'আড়ম্বরপূর্ণ ভিউ', s:'booked' },
-  { f:'৭ম তলা',  t:'ফ্যামিলি ফ্ল্যাট', n:'দক্ষিণমুখী · ২টি বারান্দা', s:'free', unit:'flat7',
-    d:{ 'মুখ':'দক্ষিণ-পশ্চিম', 'আয়তন':'১৩০০+ বর্গফুট (প্ল্যান অনুযায়ী)', 'বারান্দা':'২টি', 'পার্কিং':'কমন গ্যারেজে স্লট' } },
-  { f:'৬ষ্ঠ তলা', t:'ফ্যামিলি ফ্ল্যাট', n:'মধ্যতলা · শান্ত', s:'booked' },
-  { f:'৫ম তলা',  t:'স্টুডিও', n:'কমপ্যাক্ট লিভিং', s:'booked' },
-  { f:'৪র্থ তলা', t:'স্টুডিও', n:'উত্তরমুখী · বারান্দা', s:'free', unit:'studio4',
-    d:{ 'মুখ':'উত্তর-পূর্ব', 'আয়তন':'১৩০০+ বর্গফুট (প্ল্যান অনুযায়ী)', 'বারান্দা':'১টি', 'পার্কিং':'কমন গ্যারেজে স্লট' } },
-  { f:'৩য় তলা', t:'ফ্যামিলি ফ্ল্যাট', n:'পার্কের কাছাকাছি', s:'booked' },
-  { f:'২য় তলা', t:'কমার্শিয়াল', n:'অফিস স্পেস', s:'booked' },
-  { f:'১ম তলা',  t:'কমার্শিয়াল', n:'দোকান · সড়কমুখী', s:'booked' },
-  { f:'নিচতলা', t:'লবি ও পার্কিং · Common', n:'বৈঠকখানা · কমন গ্যারেজ', s:'common',
-    d:{ 'ব্যবহার':'বৈঠকখানা ও কার্যকর ভবন-প্রাঙ্গণ', 'পার্কিং':'কমন গ্যারেজ', 'নিরাপত্তা':'CCTV ও নিয়ন্ত্রিত প্রবেশ' } },
-];
-const STATUS = { free:'উপলব্ধ', booked:'বুকড', common:'কমন' };
-const chip = s => `<span class="chip ${s}">${STATUS[s]}</span>`;
-const chev = `<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
+/* ═══════════════════════════════════════════════════════════
+   তলা ও ইউনিট ডেটা — এখানেই সব এডিট করবে
+   FLOOR & UNIT DATA — edit here
+   ─────────────────────────────────────────────────────────
+   • ১১টি আবাসিক তলা, প্রতিটিতে ১২টি ইউনিট: A, B, C, D
+   • প্রতিটি ইউনিটের অবস্থা:  s:'free' = উপলব্ধ · s:'booked' = বুকড
+   • mkUnits({C:'free'}) মানে → শুধু C উপলব্ধ, বাকি A/B/D বুকড
+   • mkUnits() মানে → পুরো তলা বুকড · mkUnits({A:'free',B:'free',C:'free',D:'free'}) → পুরো তলা ফাঁকা
+   • হিরোর "মাত্র Xটি ফ্ল্যাট অবশিষ্ট" ও হেডার কাউন্টার অটো আপডেট হয়
+   • দিক/মুখ বদলাতে: নিচের FACE লাইনটি সম্পাদনা করুন
+   ═══════════════════════════════════════════════════════════ */
+const FACE = { A:'পূর্বমুখী · East', B:'দক্ষিণমুখী · South', C:'পশ্চিমমুখী · West', D:'উত্তরমুখী · North' };
+const mkUnits = o => ['A','B','C','D'].map(u => ({ u, s:(o && o[u]) || 'booked' }));
 
+const FLOORS = [
+  { f:'ছাদ', en:'Roof', t:'কমন ছাদ · Common', n:'বসার ডেক · শিশুদের খেলার জায়গা',
+    d:{ 'ব্যবহার':'আউটডোর বসার স্পেস ও শিশুদের খেলার জায়গা', 'অতিরিক্ত':'সোলার ব্যাকআপ ও রিজার্ভ ওয়াটার ট্যাংক', 'প্রবেশ':'সব বাসিন্দার জন্য উন্মুক্ত' } },
+  { f:'১১ম তলা', en:'11', units: mkUnits({ C:'free' }) },
+  { f:'১০ম তলা', en:'10', units: mkUnits() },
+  { f:'৯ম তলা',  en:'9',  units: mkUnits({ B:'free' }) },
+  { f:'৮ম তলা',  en:'8',  units: mkUnits() },
+  { f:'৭ম তলা',  en:'7',  units: mkUnits({ A:'free', D:'free' }) },
+  { f:'৬ষ্ঠ তলা', en:'6',  units: mkUnits() },
+  { f:'৫ম তলা',  en:'5',  units: mkUnits({ C:'free' }) },
+  { f:'৪র্থ তলা', en:'4',  units: mkUnits() },
+  { f:'৩য় তলা',  en:'3',  units: mkUnits({ B:'free', D:'free' }) },
+  { f:'২য় তলা',  en:'2',  units: mkUnits() },
+  { f:'১ম তলা',  en:'1',  units: mkUnits({ A:'free' }) },
+  { f:'নিচতলা', en:'Ground', t:'লবি ও পার্কিং · Common', n:'লবি · বৈঠকখানা · কমন গ্যারেজ',
+    d:{ 'ব্যবহার':'প্রশস্ত লবি, বৈঠকখানা ও নিয়ন্ত্রিত প্রবেশপথ', 'পার্কিং':'কমন গ্যারেজ', 'নিরাপত্তা':'CCTV ও সার্বক্ষণিক কেয়ারটেকার' } },
+];
+/* ---------- counters (hero badge + header chip) ---------- */
+const totalUnits = FLOORS.reduce((n, fl) => n + (fl.units ? fl.units.length : 0), 0);
+const totalFree  = FLOORS.reduce((n, fl) => n + (fl.units ? fl.units.filter(x => x.s === 'free').length : 0), 0);
+  $('#freeBadge').innerHTML = `<span class="dot"></span> মোট ${bn(totalUnits)}টি ফ্ল্যাট · উপলব্ধ ${bn(totalFree)}টি · ${totalFree} available`;
+ $('#freeChip').textContent = `মোট ${bn(totalUnits)}টিফ্ল্যাট · উপলব্ধ ${bn(totalFree)}টি`;
+/* ---------- render floor list ---------- */
 const list = $('#floorList');
 FLOORS.forEach(fl => {
-  let inner = '';
-  if (fl.d) inner += `<div class="d-grid">` + Object.entries(fl.d)
-    .map(([k,v]) => `<div class="d-item"><b>${k}</b><span>${v}</span></div>`).join('') + `</div>`;
-  if (fl.s === 'free'){
-    inner += `<div class="fb-flex">
-      <div class="req"><h4>বুকিংয়ে যা যা লাগবে · Requirements</h4><ul>
-        <li>জাতীয় পরিচয়পত্র / পাসপোর্টের কপি</li>
-        <li>সাম্প্রতিক ২ কপি ছবি</li>
-        <li>বুকিং মানি জমার রিসিট</li>
-        <li>নমিনির নাম ও সম্পর্ক</li></ul></div>
-      <a href="#visit" class="btn primary small" data-unit="${fl.unit}">এই ইউনিটটি বুক করুন · Book</a></div>`;
-  } else if (fl.s === 'booked'){
-    inner += `<div class="fb-flex">
-      <p>এই ইউনিটটি ইতিমধ্যেই বুক হয়ে গেছে। ওয়েটলিস্টে নাম লেখাতে বা বিকল্প দেখতে হটলাইনে কল করুন।</p>
-      <a class="btn ghost small" href="tel:+8801704396996" aria-label="ওয়েটলিস্টে যোগ করুন">ওয়েটলিস্টে যোগ করুন</a></div>`;
+  let head, inner;
+
+if (fl.units){
+    const free = fl.units.filter(x => x.s === 'free').length;
+    const statusChip = free
+      ? chip('free', `${bn(free)}/১২ উপলব্ধ`)
+      : chip('booked', 'সম্পূর্ণ বুকড · Full');
+    head = `<span class="f-name">${fl.f}</span>
+            <span class="f-type">ফ্যামিলি ফ্ল্যাট · Family</span>
+            <span class="f-note">১২টি ইউনিট (A, B, C, D)</span>
+            ${statusChip}${chev}`;
+    inner = `<div class="u-grid">` + fl.units.map(x => {
+      const code = fl.en + x.u;
+      return x.s === 'free'
+        ? `<div class="ucard free">
+             <div class="u-top"><span class="u-code">${x.u}</span><span class="u-id">${bn(fl.en)}-${x.u} · Unit ${code}</span></div>
+             <p class="u-face">${FACE[x.u]}</p>
+             ${chip('free','উপলব্ধ · Available')}
+             <a href="#visit" class="btn primary u-btn" data-unit="${code}">বুক করুন · Book</a>
+           </div>`
+        : `<div class="ucard booked">
+             <div class="u-top"><span class="u-code">${x.u}</span><span class="u-id">${bn(fl.en)}-${x.u} · Unit ${code}</span></div>
+             <p class="u-face">${FACE[x.u]}</p>
+             ${chip('booked','বুকড · Booked')}
+           </div>`;
+    }).join('') + `</div>`;
+  } else {
+    head = `<span class="f-name">${fl.f}</span>
+            <span class="f-type">${fl.t}</span>
+            <span class="f-note">${fl.n}</span>
+            ${chip('common','কমন · Common')}${chev}`;
+    inner = `<div class="d-grid">` + Object.entries(fl.d)
+      .map(([k,v]) => `<div class="d-item"><b>${k}</b><span>${v}</span></div>`).join('') + `</div>`;
   }
+
   const row = document.createElement('div');
   row.className = 'frow';
-  row.innerHTML = `<button class="frow-head" aria-expanded="false">
-      <span class="f-name">${fl.f}</span><span class="f-type">${fl.t}</span>
-      <span class="f-note">${fl.n}</span>${chip(fl.s)}${chev}</button>
+  row.innerHTML = `<button class="frow-head" aria-expanded="false">${head}</button>
     <div class="frow-body"><div class="fb-in"><div class="fb-pad">${inner}</div></div></div>`;
   list.appendChild(row);
 });
+
+/* accordion — one open at a time */
 document.querySelectorAll('.frow-head').forEach(h => {
   h.addEventListener('click', () => {
     const row = h.closest('.frow'), open = row.classList.contains('open');
@@ -1050,7 +1110,8 @@ document.querySelectorAll('.frow-head').forEach(h => {
     if (!open){ row.classList.add('open'); h.setAttribute('aria-expanded','true'); }
   });
 });
-/* row CTA → preselect unit + purpose in booking form */
+
+/* unit tile CTA → preselect unit + purpose in booking form */
 document.addEventListener('click', e => {
   const a = e.target.closest('[data-unit]');
   if (a){ $('#unit').value = a.dataset.unit; $('#purpose').value = 'booking'; }
@@ -1061,6 +1122,20 @@ const form = $('#visitForm'), success = $('#formSuccess');
 const nameEl = $('#fname'), phoneEl = $('#fphone');
 const digits = s => s.replace(/[০-৯]/g, c => '০১২৩৪৫৬৭৮৯'.indexOf(c)).replace(/[^\d]/g, '');
 const toBn   = s => s.replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+
+/* dropdown এ উপলব্ধ ইউনিটগুলো অটো-ফিল */
+(function fillUnits(){
+  const sel = $('#unit');
+  let html = '<option value="unsure">এখনো ঠিক করিনি — দেখে স্যার করব</option>';
+  FLOORS.forEach(fl => {
+    if (!fl.units) return;
+    fl.units.filter(x => x.s === 'free').forEach(x => {
+      const code = fl.en + x.u;
+      html += `<option value="${code}">${fl.f} — ইউনিট ${x.u} (${code}) · ${FACE[x.u]}</option>`;
+    });
+  });
+  sel.innerHTML = html;
+})();
 
 const PURPOSES = {
   visit:   { t:'ভিজিটের অনুরোধ গৃহীত!', m:(w,p)=>`আমাদের টিম <b>${w}</b>-এর মধ্যে <b>${p}</b> নম্বরে কল করে ভিজিটের সময় নিশ্চিত করবে।` },
@@ -1083,7 +1158,7 @@ form.addEventListener('submit', e => {
   const w = $('#fday').value + ', ' + $('#ftime').value;
   const p = toBn(digits(phoneEl.value));
   $('#okTitle').textContent = P.t + ' — ' + nameEl.value.trim() + '!';
-  $('#okMsg').innerHTML = P.m(w, p) + '<br>জরুরি হলে হটলাইন: <b>০১৭০৪-৩৯৭১৭৬</b>';
+  $('#okMsg').innerHTML = P.m(w, p) + '<br>জরুরি হলে হটলাইন: <b>01351-170210</b>';
   form.hidden = true; success.hidden = false;
   success.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block:'center' });
   toast(P.t);
