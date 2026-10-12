@@ -783,7 +783,7 @@ footer address{font-style:normal;font-size:.93rem;line-height:1.9;color:#CFC5B2}
   <div class="wrap">
     <p class="eyebrow reveal">Availability · তলা-তালিকা</p>
     <h2 class="reveal" data-d="60">তলা ও ইউনিট অ্যাভেইলেবিলিটি</h2>
-    <p class="en-sub reveal" data-d="90">Ground (common) → 11 floors × 4 units (A–D) → Rooftop (common)</p>
+    <p class="en-sub reveal" data-d="90">Ground (common) → 09 floors × 4 units (A–D) → Rooftop (common)</p>
     <div class="sched-top reveal" data-d="140">
       <div class="legend">
         <span class="chip free">উপলব্ধ · Available</span>
@@ -791,7 +791,7 @@ footer address{font-style:normal;font-size:.93rem;line-height:1.9;color:#CFC5B2}
         <span class="chip common">কমন · Common</span>
       </div>
       <!-- এই লাইনটিও JS থেকে অটো-আপডেট হয় -->
-      <span class="chip free" id="freeChip">মোট ৪৪টি ফ্ল্যাট</span>
+      <span class="chip free" id="freeChip">মোট 36টি ফ্ল্যাট</span>
     </div>
     <p class="sched-hint reveal" data-d="180">▼ যেকোনো তলায় ক্লিক করলে সেই তলার ৪টি ইউনিট (A, B, C, D) দেখা যাবে · Click a floor</p>
     <div id="floorList" class="reveal" data-d="220"></div>
@@ -955,7 +955,7 @@ footer address{font-style:normal;font-size:.93rem;line-height:1.9;color:#CFC5B2}
   </div>
   <div class="foot-bar">
       <span>© <span id="yr"></span> দিগন্ত প্রোপার্টিজ অ্যান্ড ডেভেলপমেন্ট · নির্মাণ সহায়তায় <b>এম/এস এম.এ ইঞ্জিনিয়ারিং (M/S M.A Engineering)</b></span>
-      <span>গ্রাউন্ড + ১১ তলা × ৪ ইউনিট · মোট ৪৪টি ফ্যামিলি ফ্ল্যাট · নকশা অনুমোদিত</span>
+      <span>গ্রাউন্ড + 09 তলা × ৪ ইউনিট · মোট 36টি ফ্যামিলি ফ্ল্যাট · নকশা অনুমোদিত</span>
     </div>
   </div>
 </footer>
@@ -1023,7 +1023,7 @@ document.querySelectorAll('.pillar').forEach(p => {
    তলা ও ইউনিট ডেটা — এখানেই সব এডিট করবে
    FLOOR & UNIT DATA — edit here
    ─────────────────────────────────────────────────────────
-   • ১১টি আবাসিক তলা, প্রতিটিতে ১২টি ইউনিট: A, B, C, D
+   • 09টি আবাসিক তলা, প্রতিটিতে ১২টি ইউনিট: A, B, C, D
    • প্রতিটি ইউনিটের অবস্থা:  s:'free' = উপলব্ধ · s:'booked' = বুকড
    • mkUnits({C:'free'}) মানে → শুধু C উপলব্ধ, বাকি A/B/D বুকড
    • mkUnits() মানে → পুরো তলা বুকড · mkUnits({A:'free',B:'free',C:'free',D:'free'}) → পুরো তলা ফাঁকা
@@ -1036,17 +1036,15 @@ const mkUnits = o => ['A','B','C','D'].map(u => ({ u, s:(o && o[u]) || 'booked' 
 const FLOORS = [
   { f:'ছাদ', en:'Roof', t:'কমন ছাদ · Common', n:'বসার ডেক · শিশুদের খেলার জায়গা',
     d:{ 'ব্যবহার':'আউটডোর বসার স্পেস ও শিশুদের খেলার জায়গা', 'অতিরিক্ত':'সোলার ব্যাকআপ ও রিজার্ভ ওয়াটার ট্যাংক', 'প্রবেশ':'সব বাসিন্দার জন্য উন্মুক্ত' } },
-  { f:'১১ম তলা', en:'11', units: mkUnits({ C:'free' }) },
-  { f:'১০ম তলা', en:'10', units: mkUnits() },
   { f:'৯ম তলা',  en:'9',  units: mkUnits({ B:'free' }) },
   { f:'৮ম তলা',  en:'8',  units: mkUnits() },
-  { f:'৭ম তলা',  en:'7',  units: mkUnits({ A:'free', D:'free' }) },
+  { f:'৭ম তলা',  en:'7',  units: mkUnits({ C:'free', D:'free' }) },
   { f:'৬ষ্ঠ তলা', en:'6',  units: mkUnits() },
   { f:'৫ম তলা',  en:'5',  units: mkUnits({ C:'free' }) },
   { f:'৪র্থ তলা', en:'4',  units: mkUnits() },
   { f:'৩য় তলা',  en:'3',  units: mkUnits({ B:'free', D:'free' }) },
   { f:'২য় তলা',  en:'2',  units: mkUnits() },
-  { f:'১ম তলা',  en:'1',  units: mkUnits({ A:'free' }) },
+  { f:'১ম তলা',  en:'1',  units: mkUnits({ C:'free' }) },
   { f:'নিচতলা', en:'Ground', t:'লবি ও পার্কিং · Common', n:'লবি · বৈঠকখানা · কমন গ্যারেজ',
     d:{ 'ব্যবহার':'প্রশস্ত লবি, বৈঠকখানা ও নিয়ন্ত্রিত প্রবেশপথ', 'পার্কিং':'কমন গ্যারেজ', 'নিরাপত্তা':'CCTV ও সার্বক্ষণিক কেয়ারটেকার' } },
 ];
